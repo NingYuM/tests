@@ -3,8 +3,7 @@ name: Nu Setup Check
 on:
   push:
     branches:
-      - main
-      - develop
+      - master
     paths-ignore:
       - '**.md'
 
