@@ -17,6 +17,7 @@ jobs:
   test-matrix:
     strategy:
       fail-fast: false
+      max-parallel: 2
       matrix:
         os: [windows-latest, ubuntu-22.04, macos-latest]
         # The "full" feature was removed for Nu after v0.93.1, try to use "default" feature instead.
@@ -39,4 +40,3 @@ jobs:
           print $'Nu version info:(char nl)'
           print (version)
           nu nu0/test.nu
-          
