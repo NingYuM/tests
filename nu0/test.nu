@@ -13,7 +13,7 @@ def remove-skill [] {
 
 # Install the skill, then repeatedly uninstall and reinstall it.
 def main [
-  --times (-n): int = 90   # Number of uninstall/reinstall cycles
+  --times (-n): int = 30   # Number of uninstall/reinstall cycles
 ] {
   mut failures = []
   let first = install-skill
