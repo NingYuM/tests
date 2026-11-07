@@ -1,0 +1,40 @@
+name: Nu Setup Check
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - '**.md'
+
+defaults:
+  run:
+    shell: nu {0}
+
+jobs:
+  test-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-22.04, macos-latest]
+        # The "full" feature was removed for Nu after v0.93.1, try to use "default" feature instead.
+        ver: [0.116.1, 0.115.0, 0.113.0]
+
+    runs-on: ${{ matrix.os }}
+    name: test (${{matrix.os}}, nu@${{matrix.ver}})
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '26'
+      - name: Setup nu@${{matrix.ver}}
+        uses: hustcer/setup-nu@main
+        with:
+          version: ${{matrix.ver}}
+      - name: Show Nu Version
+        run: |
+          print $'Nu version info:(char nl)'
+          print (version)
+          npx skills add -y -g hustcer/pptx-nova --skill pptx-nova -a claude-code cursor opencode codex
