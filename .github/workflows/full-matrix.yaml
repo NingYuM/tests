@@ -2,7 +2,7 @@ name: Nu Setup Check
 
 on:
   schedule:
-    - cron: '0,50 * * * *'
+    - cron: '12,39 * * * *'
   push:
     branches:
       - master
