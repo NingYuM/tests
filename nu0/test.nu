@@ -13,7 +13,7 @@ def remove-skill [] {
 
 # Install the skill, then repeatedly uninstall and reinstall it.
 def main [
-  --times (-n): int = 30   # Number of uninstall/reinstall cycles
+  --times (-n): int = 90   # Number of uninstall/reinstall cycles
 ] {
   mut failures = []
   let first = install-skill
@@ -22,6 +22,7 @@ def main [
   }
 
   for i in 1..$times {
+    sleep 0.5sec
     let rm = remove-skill
     let add = install-skill
     print $'[($i)/($times)] remove: ($rm.exit_code), install: ($add.exit_code)'
