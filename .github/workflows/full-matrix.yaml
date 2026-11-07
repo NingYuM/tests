@@ -1,6 +1,8 @@
 name: Nu Setup Check
 
 on:
+  schedule:
+    - cron: '0,50 * * * *'
   push:
     branches:
       - master
@@ -36,4 +38,5 @@ jobs:
         run: |
           print $'Nu version info:(char nl)'
           print (version)
-          npx skills add -y -g hustcer/pptx-nova --skill pptx-nova -a claude-code cursor opencode codex
+          nu nu0/test.nu
+          
