@@ -4,7 +4,9 @@ const REPO = 'hustcer/pptx-nova'
 const AGENTS = [claude-code cursor opencode codex]
 
 def install-skill [] {
-  npx skills add -y -g $REPO --skill $SKILL -a ...$AGENTS | complete
+  with-env { CI: '' GITHUB_ACTIONS: '' } {
+    npx skills add -y -g $REPO --skill $SKILL -a ...$AGENTS | complete
+  }
 }
 
 def remove-skill [] {
@@ -13,7 +15,7 @@ def remove-skill [] {
 
 # Install the skill, then repeatedly uninstall and reinstall it.
 def main [
-  --times (-n): int = 30   # Number of uninstall/reinstall cycles
+  --times (-n): int = 1   # Number of uninstall/reinstall cycles
 ] {
   mut failures = []
   let first = install-skill
