@@ -6,11 +6,13 @@ const AGENTS = [claude-code cursor opencode codex]
 def install-skill [] {
   with-env { CI: '' GITHUB_ACTIONS: '' } {
     npx skills add -y -g $REPO --skill $SKILL -a ...$AGENTS | complete
+    npm i -g @s8fy/xdoc | complete
   }
 }
 
 def remove-skill [] {
   npx skills remove -y -g $SKILL | complete
+  npm un -g @s8fy/xdoc | complete
 }
 
 # Install the skill, then repeatedly uninstall and reinstall it.
