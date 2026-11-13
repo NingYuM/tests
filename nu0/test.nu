@@ -5,14 +5,22 @@ const AGENTS = [claude-code cursor opencode codex]
 
 def install-skill [] {
   with-env { CI: '' GITHUB_ACTIONS: '' } {
-    npx skills add -y -g $REPO --skill $SKILL -a ...$AGENTS | complete
     npm i -g @s8fy/xdoc | complete
+    npm i -g @s8fy/emf2svg | complete
+    npm i -g @s8fy/pptx-viewer | complete
+    npm i -g @s8fy/pptx-converter | complete
+    npm i -g @s8fy/pptx-viewer-react | complete
+    npx skills add -y -g $REPO --skill $SKILL -a ...$AGENTS | complete
   }
 }
 
 def remove-skill [] {
   npx skills remove -y -g $SKILL | complete
   npm un -g @s8fy/xdoc | complete
+  npm un -g @s8fy/emf2svg | complete
+  npm un -g @s8fy/pptx-viewer | complete
+  npm un -g @s8fy/pptx-converter | complete
+  npm un -g @s8fy/pptx-viewer-react | complete
 }
 
 # Install the skill, then repeatedly uninstall and reinstall it.
