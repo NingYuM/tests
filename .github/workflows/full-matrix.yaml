@@ -3,7 +3,18 @@ name: Nu Setup Check
 on:
   workflow_dispatch:
   schedule:
-    - cron: '12 * * * *'
+    - cron: '12 0 * * *'
+    - cron: '15 2 * * *'
+    - cron: '08 5 * * *'
+    - cron: '11 6 * * *'
+    - cron: '12 8 * * *'
+    - cron: '16 10 * * *'
+    - cron: '18 12 * * *'
+    - cron: '55 13 * * *'
+    - cron: '07 15 * * *'
+    - cron: '09 17 * * *'
+    - cron: '12 19 * * *'
+    - cron: '15 21 * * *'
   push:
     branches:
       - master
