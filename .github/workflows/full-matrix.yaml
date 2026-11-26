@@ -31,9 +31,9 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        os: [windows-latest, ubuntu-22.04, macos-latest, ubuntu-latest]
+        os: [windows-latest, macos-latest, ubuntu-latest]
         # The "full" feature was removed for Nu after v0.93.1, try to use "default" feature instead.
-        ver: [0.117.0, 0.116.1, 0.115.0, 0.113.0]
+        ver: [0.117.0, 0.116.1, 0.115.0]
 
     runs-on: ${{ matrix.os }}
     name: test (${{matrix.os}}, nu@${{matrix.ver}})
